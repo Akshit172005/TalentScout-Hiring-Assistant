@@ -1,244 +1,177 @@
-\# TalentScout Hiring Assistant 🤖
+# TalentScout Hiring Assistant 🤖
 
+## 📌 Project Overview
 
+TalentScout Hiring Assistant is an AI-powered chatbot built using Streamlit and a Large Language Model (LLM).
 
-\## Project Overview
+It simulates an initial technical screening interview for a fictional recruitment agency named "TalentScout".
 
+The chatbot:
+- Collects essential candidate information
+- Maintains conversation context
+- Generates technical interview questions based on declared tech stack
+- Performs basic sentiment analysis
+- Handles conversation termination gracefully
 
+---
 
-TalentScout Hiring Assistant is an AI-powered chatbot built using Streamlit and a Large Language Model (LLM).  
-
-It simulates an initial screening interview process for a fictional recruitment agency called "TalentScout."
-
-
-
-The chatbot collects essential candidate information and generates technical interview questions based on the candidate's declared tech stack.
-
-
+## 🎯 Objective
 
 This project demonstrates:
 
-\- Prompt engineering
+- Prompt Engineering
+- Context-aware LLM interactions
+- Controlled conversation flow
+- Technical question generation
+- Secure handling of candidate information
+- Clean UI implementation using Streamlit
 
-\- Context-aware conversation handling
+---
 
-\- LLM integration
+## 🛠️ Tech Stack
 
-\- Structured input validation
+- Python
+- Streamlit
+- Groq LLM API
+- TextBlob (Sentiment Analysis)
+- Regex (Validation)
+- JSON (Simulated Data Storage)
 
-\- Simulated backend data storage
+---
 
+## ⚙️ Features
+
+### 1️⃣ Information Gathering
+The chatbot collects:
+- Full Name
+- Email Address (validated)
+- Phone Number (validated)
+- Years of Experience
+- Desired Position
+- Current Location
+- Tech Stack
+
+### 2️⃣ Context Handling
+Conversation flow is controlled using session-based stage management to ensure logical interaction.
+
+### 3️⃣ Technical Question Generation
+For each technology mentioned in the tech stack:
+- Generates exactly 3 technical interview questions
+- Ensures structured output format
+- Avoids explanations or deviations
+
+### 4️⃣ Sentiment Analysis (Bonus Feature)
+Analyzes candidate responses using TextBlob and stores emotional tone as:
+- Positive
+- Neutral
+- Negative
+
+### 5️⃣ Data Privacy
+- API keys stored in `.env`
+- `.env` excluded using `.gitignore`
+- Candidate data stored locally in `candidates_data.json` (simulated)
+
+---
+
+## 🧠 Prompt Engineering Strategy
+
+Two types of prompts were designed:
+
+### 1️⃣ System Prompt
+Controls:
+- Hiring assistant role
+- Conversation flow
+- Information boundaries
+- Professional tone
+
+### 2️⃣ Technical Generation Prompt
+Strict formatting instructions:
+- Exactly 3 questions per technology
+- No explanations
+- Structured output
+
+This prevents hallucination and ensures consistent evaluation-style questions.
+
+---
+
+## 🚀 Installation Guide
+
+### 1️⃣ Clone Repository
+git clone https://github.com/Akshit172005/TalentScout-Hiring-Assistant.git
+
+cd TalentScout-Hiring-Assistant
+
+
+### 2️⃣ Create Virtual Environment
+
+python -m venv venv
+venv\Scripts\activate
+
+
+### 3️⃣ Install Dependencies
+
+pip install -r requirements.txt
+
+
+### 4️⃣ Create `.env` File
+
+Add your Groq API key:
+
+GROQ_API_KEY=your_api_key_here
+
+
+### 5️⃣ Run Application
+
+streamlit run app.py
 
 
 ---
 
+## 🏗️ Architecture Overview
 
+User → Streamlit UI → Stage Controller → LLM Handler → Groq API → Response → UI
 
-\## Features
-
-
-
-\- Structured stage-based conversation flow
-
-\- Input validation (email, phone number, experience)
-
-\- Tech stack declaration and parsing
-
-\- Automatic generation of 3 technical questions per technology
-
-\- Context-aware interaction using session state
-
-\- Fallback mechanism for invalid input
-
-\- Simulated data storage using JSON
-
-\- Privacy-aware messaging
-
-\- Clean and intuitive Streamlit UI
-
-
+Session State is used to:
+- Maintain conversation flow
+- Store candidate data
+- Control transitions
 
 ---
 
+## 🧩 Challenges & Solutions
 
-
-\## Technologies Used
-
-
-
-\- Python
-
-\- Streamlit (Frontend UI)
-
-\- Groq LLM API (Llama 3.1 model)
-
-\- JSON (Simulated backend storage)
-
-\- Regular Expressions (Input validation)
-
-
+| Challenge | Solution |
+|------------|------------|
+| Model hallucinating extra content | Strict prompt formatting rules |
+| Losing conversation flow | Stage-based control system |
+| API key exposure | .env + .gitignore |
+| Secret push rejection | Clean Git history |
+| Unstructured question output | Enforced formatting pattern |
 
 ---
 
+## 📊 Evaluation Criteria Coverage
 
-
-\## Architecture Overview
-
-
-
-The system is divided into the following components:
-
-
-
-1\. \*\*Streamlit UI (app.py)\*\*
-
-&nbsp;  - Handles user interaction
-
-&nbsp;  - Maintains session state
-
-&nbsp;  - Controls conversation stages
-
-
-
-2\. \*\*LLM Handler (llm\_handler.py)\*\*
-
-&nbsp;  - Connects to Groq API
-
-&nbsp;  - Sends structured prompts
-
-&nbsp;  - Returns generated responses
-
-
-
-3\. \*\*Prompt Strategy\*\*
-
-&nbsp;  - Separate structured prompts for:
-
-&nbsp;    - Information gathering
-
-&nbsp;    - Technical question generation
-
-&nbsp;  - Strict formatting rules enforced during question generation
-
-
-
-4\. \*\*Simulated Data Storage\*\*
-
-&nbsp;  - Candidate data is stored locally in `candidates\_data.json`
-
-&nbsp;  - No external database is used
-
-
+✔ Technical Implementation  
+✔ Prompt Engineering  
+✔ Context Handling  
+✔ Data Validation  
+✔ UI Experience  
+✔ Sentiment Analysis (Bonus)  
+✔ Clean Git Repository  
+✔ Structured Documentation  
 
 ---
 
+## 🎥 Demo
 
+Live demo link (to be added after deployment)
 
-\## Conversation Flow
-
-
-
-The chatbot follows a strict stage-based structure:
-
-
-
-1\. Greeting
-
-2\. Name collection
-
-3\. Email validation
-
-4\. Phone validation
-
-5\. Experience collection
-
-6\. Desired position
-
-7\. Location
-
-8\. Tech stack declaration
-
-9\. Technical question generation
-
-10\. Completion message
-
-
-
-This ensures:
-
-\- Controlled flow
-
-\- Context awareness
-
-\- No deviation from hiring purpose
-
-
+Video walkthrough (to be added)
 
 ---
 
+## 👨‍💻 Author
 
-
-\## Prompt Engineering Strategy
-
-
-
-Two types of prompts are used:
-
-
-
-\### 1. Screening Prompt
-
-Guides the conversation and ensures the chatbot collects required information step by step.
-
-
-
-\### 2. Technical Interview Prompt
-
-A strict instruction-based prompt that:
-
-\- Identifies technologies separately
-
-\- Generates exactly 3 questions per technology
-
-\- Avoids explanations
-
-\- Enforces structured formatting
-
-
-
-This prevents hallucination and ensures relevant technical depth.
-
-
-
----
-
-
-
-\## Data Handling \& Privacy
-
-
-
-\- Candidate information is stored locally in a JSON file.
-
-\- No external database or cloud storage is used.
-
-\- Data is not shared with any third party.
-
-\- The chatbot explicitly informs the user that data is used only for recruitment purposes.
-
-\- Sensitive data handling is simulated following basic privacy awareness principles aligned with GDPR guidelines.
-
-
-
----
-
-
-
-\## Installation Instructions
-
-
-
-1\. Clone the repository:
-
-
-
+Akshit Gupta  
+AI/ML Intern Applicant  
