@@ -182,7 +182,10 @@ Technology: <Technology Name>
         reply = "This session has already been completed."
 
     else:
-        reply = "I'm not sure how to process that."
+        reply = (
+        "I'm here to conduct your initial screening for the applied position.\n\n"
+        "Please provide the requested information so we can continue the process."
+    )
 
     st.session_state.chat_history.append({"role": "assistant", "content": reply})
     st.rerun()
